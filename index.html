@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Calculator</title>
+  <meta name="description" content="Simple Calculator With Dark Mode." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles/dark.css" id="theme" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="container">
+      <div class="header-container">
+        <h1 id="toast">Calculator</h1>
+        <div class="top-buttons">
+
+          <button type="button" onclick="changeTheme()" class="theme-button">
+            <img src="assets/SunIcon.svg" alt="Theme Icon" height="19" width="19" id="theme-icon">
+          </button>
+        </div>
+      </div>
+      <div class="first-row">
+        <!-- main text box -->
+        <input type="text" name="result" id="result" placeholder="Result" readonly />
+        <!-- function buttons -->
+        <input type="button" value="C" onclick="clearNum()" />
+      </div>
+      <div class="second-row">
+        <input type="button" value="1" onclick="addDigit(1)" />
+        <input type="button" value="2" onclick="addDigit(2)" />
+        <input type="button" value="3" onclick="addDigit(3)" />
+        <input type="button" value="+" onclick="oper('+')" />
+      </div>
+      <div class="third-row">
+        <input type="button" value="4" onclick=" addDigit(4)" />
+        <input type="button" value="5" onclick=" addDigit(5)" />
+        <input type="button" value="6" onclick=" addDigit(6)" />
+        <input type="button" value="-" onclick="oper('-')" />
+      </div>
+      <div class="fourth-row">
+        <input type="button" value="7" onclick="addDigit(7)" />
+        <input type="button" value="8" onclick="addDigit(8)" />
+        <input type="button" value="9" onclick="addDigit(9)" />
+        <input type="button" value="x" onclick="oper('*')" />
+      </div>
+      <div class="fifth-row">
+        <input type="button" value="/" onclick="oper('/')" />
+        <input type="button" value="0" onclick="addDigit(0)" />
+        <input type="button" value="." onclick="oper('.')" />
+        <input type="button" value="=" onclick="calculate()" />
+      </div>
+      <div class="sixth-row">
+        <input type="button" value="M%" onclick="oper('mod')" />
+        <input type="button" value="x^y" onclick="oper('pow')" />
+        <input type="button" value="E√" onclick="squareRoot()" />
+      </div>
+      <div class="seventh-row">
+        <input type="button" value="MR" onclick="manageMemory('recall')" />
+        <input type="button" value="MC" onclick="manageMemory('clear')" />
+        <input type="button" value="M+" onclick="manageMemory('store')" />
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    let clearFlag = false
+    let num1 = 0
+    let lastOper = ""
+    let sum = 0
+    let memory = 0
+
+
+    function addDigit(digit) {
+      if (clearFlag) {
+        res.value = ""
+        clearFlag = false
+      }
+      res.value += digit
+    }
+
+    function oper(op) {
+      clearFlag = true
+      num1 = res.value
+      lastOper = op
+    }
+
+    function calculate() {
+      clearFlag = true
+      if (lastOper == "+") {
+        sum = +num1 + +res.value
+      } else if (lastOper == "-") {
+        sum = +num1 - +res.value
+      } else if (lastOper == "*") {
+        sum = +num1 * +res.value
+      } else if (lastOper == "/") {
+        sum = +num1 / +res.value
+      } else if (lastOper == "pow") {  // exponentiation
+        sum = Math.pow(+num1, +res.value);
+      } else if (lastOper == "mod") {  // modulo
+        sum = +num1 % +res.value;
+      }
+      res.value = sum // will calculate the above after X operation is clicked
+    }
+
+
+    function manageMemory(op) {
+      if (op === 'store') {
+        memory = res.value
+      } else if (op === 'recall') {
+        res.value = memory
+      } else if (op === 'clear') {
+        memory = 0
+      }
+    }
+
+
+    function clearNum() { // clear button (C)
+      res.value = ""
+      clearFlag = true;
+    }
+
+    function squareRoot() {
+      res.value = Math.sqrt(res.value)
+      clearFlag = true;
+    }
+
+    function exponentiation() {
+      lastOper = "pow";
+      num1 = res.value;
+      clearFlag = true;
+    }
+
+    function modulo() {
+      lastOper = "mod";
+      num1 = res.value;
+      clearFlag = true;
+    }
+
+  </script>
+
+
+  <script src="scripts/css_script.js">
+  </script>
+</body>
+
+</html>
