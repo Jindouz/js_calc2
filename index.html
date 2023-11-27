@@ -29,7 +29,7 @@
         <!-- main text box -->
         <input type="text" name="result" id="result" placeholder="Result" readonly />
         <!-- function buttons -->
-        <input type="button" value="C" onclick="clearNum()" />
+        <input type="button" value="=" onclick="calculate()" />
       </div>
       <div class="second-row">
         <input type="button" value="1" onclick="addDigit(1)" />
@@ -50,10 +50,11 @@
         <input type="button" value="x" onclick="oper('*')" />
       </div>
       <div class="fifth-row">
-        <input type="button" value="/" onclick="oper('/')" />
+        <input type="button" value="C" onclick="clearNum()" style="color: rgb(214, 67, 67)" />
         <input type="button" value="0" onclick="addDigit(0)" />
         <input type="button" value="." onclick="oper('.')" />
-        <input type="button" value="=" onclick="calculate()" />
+        <input type="button" value="/" onclick="oper('/')" />
+
       </div>
       <div class="sixth-row">
         <input type="button" value="M%" onclick="oper('mod')" />
@@ -61,9 +62,9 @@
         <input type="button" value="E√" onclick="squareRoot()" />
       </div>
       <div class="seventh-row">
-        <input type="button" value="MR" onclick="manageMemory('recall')" />
-        <input type="button" value="MC" onclick="manageMemory('clear')" />
-        <input type="button" value="M+" onclick="manageMemory('store')" />
+        <input type="button" value="MR" onclick="manageMemory('recall')" style="color: rgb(255, 208, 0)" />
+        <input type="button" value="MC" onclick="manageMemory('clear')" style="color: rgb(255, 208, 0)" />
+        <input type="button" value="M+" onclick="manageMemory('store')" style="color: rgb(255, 208, 0)" />
       </div>
     </div>
   </div>
