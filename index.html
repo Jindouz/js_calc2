@@ -72,15 +72,15 @@
 
 
   <script>
-    let clearFlag = false
-    let num1 = 0
-    let lastOper = ""
-    let sum = 0
-    let memory = 0
+    let clearFlag = false  // flag to clear the text box
+    let num1 = 0 // first number
+    let lastOper = "" // saved operation
+    let sum = 0 // result
+    let memory = 0 // memory variable
 
 
     function addDigit(digit) {
-      if (clearFlag) {
+      if (clearFlag) { // when true it will raise a flag to clear the text box id=res
         res.value = ""
         clearFlag = false
       }
@@ -93,7 +93,7 @@
       lastOper = op
     }
 
-    function calculate() {
+    function calculate() { // calculates the sum after X operation is clicked
       clearFlag = true
       if (lastOper == "+") {
         sum = +num1 + +res.value
@@ -108,7 +108,7 @@
       } else if (lastOper == "mod") {  // modulo
         sum = +num1 % +res.value;
       }
-      res.value = sum // will calculate the above after X operation is clicked
+      res.value = sum
     }
 
 
