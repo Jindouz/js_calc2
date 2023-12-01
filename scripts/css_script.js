@@ -3,7 +3,6 @@ const darkTheme = "styles/dark.css";
 const sunIcon = "assets/SunIcon.svg";
 const moonIcon = "assets/MoonIcon.svg";
 const themeIcon = document.getElementById("theme-icon");
-const res = document.getElementById("result");
 const toast = document.getElementById("toast");
 
 
